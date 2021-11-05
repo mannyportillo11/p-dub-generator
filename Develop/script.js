@@ -64,6 +64,32 @@ var symbolArray = ["!", "@", "#", "$", "%", "^", "&", "*"];
 //set empty password array
 var passwordArr = [];
 
+function validateLength() {
+  lengthPrompt = window.prompt(
+    "How long should your password be? Please, choose between 8 and 128 Characters"
+  );
+  lengthPrompt = parseInt(lengthPrompt);
+  if (lengthPrompt > 7 && lengthPrompt < 129) {
+    return lengthPrompt;
+  } else if (!lengthPrompt) {
+    window.alert("Please, enter a valid selection!");
+    validateLength();
+  } else {
+    window.alert("Please, enter a valid selection!");
+    validateLength();
+  }
+}
+
+function generatePassword() {
+  //Welcome Message
+  window.alert(
+    "Welcome to P Dub Gen! We're gonna help you generate a new password! Just a few questions for you."
+  );
+
+  //call length function
+  validateLength();
+}
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -76,4 +102,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
