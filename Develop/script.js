@@ -66,7 +66,9 @@ var passwordArr = [];
 
 function validateLength() {
   lengthPrompt = window.prompt(
-    "How long should your password be? Please, choose between 8 and 128 Characters"
+    "How long should your password be?" +
+      "\n" +
+      "Please, choose between 8 and 128 Characters"
   );
   lengthPrompt = parseInt(lengthPrompt);
   if (lengthPrompt > 7 && lengthPrompt < 129) {
@@ -82,7 +84,7 @@ function validateLength() {
 
 function lowerIncluded() {
   var lowerCasePrompt = window.confirm(
-    "would you like to include lower case letters in your pw?"
+    "would you like to include lower case letters in your password?"
   );
 
   if (lowerCasePrompt) {
@@ -117,19 +119,33 @@ function specialIncluded() {
   return;
 }
 
+function noCharacters() {
+  if (passwordArr.length === 0) {
+    window.alert("You must pick at least one type of character!");
+    generatePassword();
+  }
+  return;
+}
+
 function generatePassword() {
   //Welcome Message
   window.alert(
-    "Welcome to P Dub Gen! We're gonna help you generate a new password! Just a few questions for you."
+    "Welcome to P-Dub Generator!" +
+      "\n" +
+      "We're gonna help you generate a new password!" +
+      "\n" +
+      "Just a few questions for you."
   );
 
   //call length function
   validateLength();
-
+  //resetpassword length to catch a no characters selected
+  passwordArr.length = 0;
   lowerIncluded();
   upperIncluded();
   numbersIncluded();
   specialIncluded();
+  noCharacters();
   writePassword();
 }
 
