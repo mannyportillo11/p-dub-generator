@@ -138,10 +138,17 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var randomPass = [];
 
-  passwordText.value = password;
+  for (let i = 0; i < lengthPrompt; i++) {
+    var randomNum = Math.floor(Math.random() * passwordArr.length);
+    var randomChar = passwordArr[randomNum];
+    randomPass.push(randomChar);
+  }
+
+  var passwordText = document.querySelector("#password");
+  passwordText.innerHTML = "Your new password is " + randomPass.join("");
+  console.log(randomPass);
 }
 
 // Add event listener to generate button
