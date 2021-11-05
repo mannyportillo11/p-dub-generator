@@ -80,6 +80,43 @@ function validateLength() {
   }
 }
 
+function lowerIncluded() {
+  var lowerCasePrompt = window.confirm(
+    "would you like to include lower case letters in your pw?"
+  );
+
+  if (lowerCasePrompt) {
+    Array.prototype.push.apply(passwordArr, lowerCaseArray);
+  }
+  return;
+}
+
+function upperIncluded() {
+  var upperCasePrompt = window.confirm("UPPERCASE?");
+
+  if (upperCasePrompt) {
+    Array.prototype.push.apply(passwordArr, upperCaseArray);
+  }
+  return;
+}
+
+function numbersIncluded() {
+  var numberCasePrompt = window.confirm("Numb3rs?");
+
+  if (numberCasePrompt) {
+    Array.prototype.push.apply(passwordArr, numberArray);
+  }
+  return;
+}
+function specialIncluded() {
+  var specialCasePrompt = window.confirm("How @bout $pecial characters?");
+
+  if (specialCasePrompt) {
+    Array.prototype.push.apply(passwordArr, symbolArray);
+  }
+  return;
+}
+
 function generatePassword() {
   //Welcome Message
   window.alert(
@@ -88,6 +125,12 @@ function generatePassword() {
 
   //call length function
   validateLength();
+
+  lowerIncluded();
+  upperIncluded();
+  numbersIncluded();
+  specialIncluded();
+  writePassword();
 }
 
 // Get references to the #generate element
